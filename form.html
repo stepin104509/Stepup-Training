@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <h2>LOGIN FORM</h2>
+    </head>
+    <style>
+        #form_login {
+                left      : 50%;
+                top       : 50%;
+                position  : absolute;
+                transform : translate(-50%, -70%);
+                border-radius: 1rem;
+        } 
+        fieldset{
+            border: 3px solid black;
+        }
+        h2{
+            text-align: center;
+        }
+        .Submit{
+            color: black;
+        }
+        body{
+            background-color: cadetblue;
+            /* text-emphasis: solid ; */
+        }
+    </style>
+    <body>
+        <div id="div1">
+            
+        <form id="form_login" name="myform" align="center">
+            <fieldset class="fd">
+            <h3>LOGIN FORM</h3>
+            <table cellspacing = "5" cellpadding = "15" >
+            
+                <tr>
+                   <td>Name :</td>
+                   <td><input type = "text" name = "name" /></td>
+                </tr>
+                
+                <tr>
+                   <td>Password :</td>
+                   <td><input type="password" name="password"/></td>
+                </tr>
+                
+                <tr>
+                   <td ></td>
+                   <td><input type = "submit" value = "Submit" onclick="onValidateform()" /></td>
+                </tr>
+                
+             </table>
+            </fieldset>
+        </form>
+    </div>
+    </body>
+    <script>
+        function onValidateform(){
+            var name=document.myform.name.value;
+            var c=['!','@','#','$','%','^','&','*','?',',','.'];
+            var n=['1','2','3','4','5','6','7','8','9','0'];
+            var password=document.myform.password.value;
+            flag=flag1=false;
+            if(name==null || name==""){
+                alert("Name can't be blank");
+                return flag;
+                
+            }
+            else if(password.length<8){
+                alert("Password must be atleast 8 characters long");
+                return flag;
+                // return false;
+            }
+             else 
+            {
+                for(let i=0;i<c.length;i++){
+                    if(password.includes(c[i])){
+                        flag=true;
+                        break;
+                    }
+                }
+                for(let j=0;j<n.length;j++){
+                    if(password.includes(n[j])){
+                        flag1=true;
+                        break;
+                    }
+                }
+            }
+            if(flag && flag1){
+                alert("Login Successfull");
+            }
+            else{
+                alert("Password should contain both special characters and Numbers ");
+                alert("Login Failed");
+            }
+        }
+    </script>
+</html>
+
